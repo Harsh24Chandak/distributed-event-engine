@@ -342,7 +342,7 @@ Click "Ingest Single Event" or "Test Idempotency" to observe sub-15ms response p
                 `;
 
                 data.line_items.forEach(item => {
-                    const tierDetails = item.tiered_breakdown.map(t => `${t.tier}: ${t.units_in_tier} @ $${t.rate}`).join('<br>');
+                    const tierDetails = item.tiered_breakdown.map(t => `${t.tier_name || t.tier}: ${t.units_billed || t.units_in_tier} units @ $${t.unit_price || t.rate}`).join('<br>');
                     itemsHtml += `
                         <tr class="hover:bg-slate-900/50">
                             <td class="py-2 font-mono text-slate-200 font-semibold">${item.meter_name}</td>
